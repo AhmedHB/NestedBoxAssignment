@@ -4,16 +4,12 @@ import data.input.Box;
 import data.input.Rule;
 import data.tree.TreeNode;
 import exception.NoRulesException;
-import lombok.Data;
 import rules.SearchRuleUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-public class LoadTreeAsc {
-    private LoadTreeAsc(){}
-    private static int countBoxes = 0;
+public class LoadTreeAsc extends LoadTree{
     public static TreeNode<Box> buildTree(String rootBoxColor, String colorBox, List<Rule<Box>> rules) throws Exception {
         countBoxes = 0;
         if(rules == null || rules.isEmpty()){
@@ -45,23 +41,10 @@ public class LoadTreeAsc {
         return rootTreeNode;
     }
 
-    private static TreeNode<Box> createRootTreeNode(String rootBoxColor){
-        Box rootBox = createBox(rootBoxColor);
-        return new TreeNode<>(rootBox);
-    }
-
-    private static Box createBox(String boxColor){
-        Box box = new Box();
-        box.setColor(boxColor);
-        box.setAmount(1);
-        return box;
-    }
-
     private static void createChildTreeNode( TreeNode<Box> treeNode,
                                              List<Rule<Box>> parentRules,
                                              List<Rule<Box>> rules,
                                              String endColor){
-
         if(parentRules == null || parentRules.isEmpty()){
             return;
         }

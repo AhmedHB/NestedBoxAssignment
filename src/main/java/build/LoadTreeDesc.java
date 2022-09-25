@@ -5,16 +5,10 @@ import data.input.Rule;
 import data.tree.TreeNode;
 import exception.ColoredBoxNotFoundException;
 import exception.NoRulesException;
-import lombok.Data;
 import rules.SearchRuleUtil;
 import java.util.List;
 
-@Data
-public class LoadTreeDesc {
-    private LoadTreeDesc(){}
-    private static int countBoxes = 0;
-    private static int countLeaves = 0;
-
+public class LoadTreeDesc extends LoadTree{
     public static TreeNode<Box> buildTree(String rootBoxColor, List<Rule<Box>> rules) throws Exception {
         countBoxes = 0;
         countLeaves = 0;
@@ -49,16 +43,6 @@ public class LoadTreeDesc {
         rootTreeNode.setNrOfLeaves(countLeaves);
 
         return rootTreeNode;
-    }
-    private static TreeNode<Box> createRootTreeNode(String rootBoxColor){
-        Box rootBox = createBox(rootBoxColor);
-        return new TreeNode<>(rootBox);
-    }
-    private static Box createBox(String boxColor){
-        Box box = new Box();
-        box.setColor(boxColor);
-        box.setAmount(1);
-        return box;
     }
     private static void createChildTreeNode( TreeNode<Box> treeNode,
                                              List<Rule<Box>> childRules,
