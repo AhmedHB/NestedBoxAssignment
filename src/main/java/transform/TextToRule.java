@@ -10,7 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TextToRule {
-    public static Rule transformStrLineToRule(String line) throws Exception {
+
+    public static final String S_$ = "\\s+$";
+    public static final String REGEX = "^ *";
+    public static final String D = "\\d";
+    public static final String REGEXNOTNUMMBER = "[^0-9]";
+
+    private TextToRule(){}
+    public static Rule<Box> transformStrLineToRule(String line) throws Exception {
         // "light red boxes contain 1 bright white box, 2 muted yellow boxes.",
         List<String> list = new ArrayList<>();
         String[] arrOfStr = line.split("contain", -2);
@@ -20,8 +27,8 @@ public class TextToRule {
         }
 
         for(String t : arrOfStr){
-            t = t.replaceFirst("^ *", "");
-            t = t.replaceFirst("\\s+$", "");
+            t = t.replaceFirst(REGEX, "");
+            t = t.replaceFirst(S_$, "");
             list.add(t);
         }
         if(list.size() == 2) {
@@ -31,21 +38,18 @@ public class TextToRule {
         }
     }
 
-    private static Rule transform(String parentBoxStr, String childrenBoxStr ){
+    private static Rule<Box> transform(String parentBoxStr, String childrenBoxStr ){
         Box dataBox = getParent(parentBoxStr);
         List<Box> childBoxes = getChildren(childrenBoxStr);
-
-        Rule node = new Rule<Box>();
+        Rule<Box> node = new Rule<>();
         node.setData(dataBox);
         node.setContains(childBoxes);
-
         return node;
     }
 
     private static Box getParent(String parentStr){
-        //parentStr = parentStr.replace("boxes", "").replace("box", "");
         parentStr = removeStopwords(parentStr);
-        parentStr = parentStr.replaceFirst("\\s+$", "");
+        parentStr = parentStr.replaceFirst(S_$, "");
         Box parentBox = new Box();
         parentBox.setColor(parentStr);
         parentBox.setAmount(1);
@@ -62,12 +66,10 @@ public class TextToRule {
                 int amount = getAmount(childBoxStr);
                 b.setAmount(amount);
 
-                childBoxStr = childBoxStr.replaceAll("\\d","");
-                //childBoxStr = childBoxStr.replace(".","");
-                //childBoxStr = childBoxStr.replace("boxes", "").replace("box", "");
+                childBoxStr = childBoxStr.replaceAll(D,"");
                 childBoxStr = removeStopwords(childBoxStr);
-                childBoxStr = childBoxStr.replaceFirst("^ *", "");
-                childBoxStr = childBoxStr.replaceFirst("\\s+$", "");
+                childBoxStr = childBoxStr.replaceFirst(REGEX, "");
+                childBoxStr = childBoxStr.replaceFirst(S_$, "");
 
                 b.setColor(childBoxStr);
                 childBoxes.add(b);
@@ -85,7 +87,6 @@ public class TextToRule {
     }
 
     private static int getAmount(String childBoxStr){
-        int amount = Integer.parseInt(childBoxStr.replaceAll("[^0-9]", ""));
-        return amount;
+        return Integer.parseInt(childBoxStr.replaceAll(REGEXNOTNUMMBER, ""));
     }
 }

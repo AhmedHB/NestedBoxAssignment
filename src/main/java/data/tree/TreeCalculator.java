@@ -1,10 +1,8 @@
 package data.tree;
 
-import calculate.NodeTreeCalculuator;
 import data.input.Box;
-import data.input.Rule;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -13,7 +11,7 @@ import java.util.stream.Collectors;
 public class TreeCalculator<T extends Box> {
     public int getNrOfChildren(TreeNode<T> rootNode){
         int nodes = 0;
-        for (TreeNode node : rootNode) {
+        for (TreeNode ignored : rootNode) {
             nodes++;
         }
         return nodes-1;
@@ -38,6 +36,6 @@ public class TreeCalculator<T extends Box> {
             }
         }
         Set<String> uniqueColors = uniqueColorLeaves.keySet();
-        return uniqueColors.stream().collect(Collectors.toList());
+        return new ArrayList<>(uniqueColors);
     }
 }

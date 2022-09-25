@@ -4,10 +4,11 @@ import data.input.Box;
 import data.input.Rule;
 import exception.ColoredBoxNotFoundException;
 import exception.NoRulesException;
+import lombok.Data;
 import rules.SearchRuleUtil;
 
 import java.util.List;
-
+@Data
 public class RuleCalculator {
     private int nrOfParents = 0;
     private int nrOfToppParents = 0;
@@ -23,7 +24,7 @@ public class RuleCalculator {
             throw new ColoredBoxNotFoundException("Box color \"" +colorBox + "\" not found! Can't continue!");
         }
 
-        for(Rule rule : foundRules){
+        for(Rule<Box> rule : foundRules){
             getParents(rule.getColorForData(), rules);
         }
 
@@ -37,7 +38,7 @@ public class RuleCalculator {
             return;
         }
 
-        for(Rule rule : foundRules){
+        for(Rule<Box> rule : foundRules){
             getParents(rule.getColorForData(), rules);
             nrOfParents++;
         }

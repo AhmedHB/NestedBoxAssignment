@@ -1,6 +1,5 @@
 import build.LoadRules;
 import calculate.ColorBoxCalculator;
-import calculate.NodeTreeCalculuator;
 import data.input.Box;
 import data.input.Rule;
 import file.ReadFile;

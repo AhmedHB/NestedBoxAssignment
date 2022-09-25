@@ -28,7 +28,7 @@ public class SampleData {
         return Arrays.asList(sampleData);
     }
 
-    public static List<String> getWrongFormatedLines(){
+    public static List<String> getWrongFormattedLines(){
         String[] sampleData = {
                 ".....",
         };

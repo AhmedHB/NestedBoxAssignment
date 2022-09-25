@@ -11,6 +11,7 @@ import java.util.List;
 
 @Data
 public class LoadTreeDesc {
+    private LoadTreeDesc(){}
     private static int countBoxes = 0;
     private static int countLeaves = 0;
 
@@ -29,15 +30,15 @@ public class LoadTreeDesc {
 
         TreeNode<Box> rootTreeNode = createRootTreeNode(rootBoxColor);
 
-        Rule rootrule = foundRootRules.get(0);
-        List<Box> rootRuleChildren = rootrule.getContains();
+        Rule<Box> rootRule = foundRootRules.get(0);
+        List<Box> rootRuleChildren = rootRule.getContains();
 
-        rootRuleChildren.stream().forEach(childRule ->{
+        rootRuleChildren.forEach(childRule ->{
             Box rootChildBox = createBox(childRule.getColor());
             List<Rule<Box>> foundChildRules = SearchRuleUtil.search(rules, Rule::getColorForData, childRule.getColor());
             for(int i=0;i<childRule.getAmount();i++) {
                 TreeNode<Box> rootChildBoxTreeNode = rootTreeNode.addChild(rootChildBox);
-                if(foundChildRules !=null || foundChildRules.size()>0) {
+                if(foundChildRules !=null && !foundChildRules.isEmpty()) {
                     createChildTreeNode(rootChildBoxTreeNode, foundChildRules, rules);
                     countBoxes++;
                 }
@@ -51,8 +52,7 @@ public class LoadTreeDesc {
     }
     private static TreeNode<Box> createRootTreeNode(String rootBoxColor){
         Box rootBox = createBox(rootBoxColor);
-        TreeNode<Box> rootTreeNode = new TreeNode<>(rootBox);
-        return rootTreeNode;
+        return new TreeNode<>(rootBox);
     }
     private static Box createBox(String boxColor){
         Box box = new Box();
@@ -63,19 +63,19 @@ public class LoadTreeDesc {
     private static void createChildTreeNode( TreeNode<Box> treeNode,
                                              List<Rule<Box>> childRules,
                                              List<Rule<Box>> rules){
-        if(childRules == null || childRules.size()==0){
+        if(childRules == null || childRules.isEmpty()){
             return;
         }
 
-        Rule childrule = childRules.get(0);
-        List<Box> ruleChildren = childrule.getContains();
+        Rule<Box> childRule = childRules.get(0);
+        List<Box> ruleChildren = childRule.getContains();
 
-        ruleChildren.stream().forEach(ruleChild ->{
+        ruleChildren.forEach(ruleChild ->{
             Box childBox = createBox(ruleChild.getColor());
             List<Rule<Box>> foundChildRules = SearchRuleUtil.search(rules, Rule::getColorForData, ruleChild.getColor());
             for(int i=0;i<ruleChild.getAmount();i++) {
                 TreeNode<Box> childBoxTreeNode = treeNode.addChild(childBox);
-                if(foundChildRules !=null || foundChildRules.size()>0) {
+                if(foundChildRules !=null && !foundChildRules.isEmpty()) {
                     createChildTreeNode(childBoxTreeNode, foundChildRules, rules);
                     countBoxes++;
                 }else{

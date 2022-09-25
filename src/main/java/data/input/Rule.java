@@ -12,12 +12,12 @@ public class Rule<T extends Box>  {
     private T data;
     private List<T> contains;
 
-    public <B extends Box> String getColorForData(){
-        return ((B) data).getColor();
+    public String getColorForData(){
+        return data.getColor();
     }
 
-    public <B extends Box> List<String> getColorsForContains(){
-        return contains.stream().map(x->x.getColor()).collect(Collectors.toList());
+    public List<String> getColorsForContains(){
+        return contains.stream().map(Box::getColor).collect(Collectors.toList());
     }
 
     public boolean contains(String color){

@@ -35,7 +35,7 @@ class LoadRulesTest {
     @Test
     void testLoadRulesWithWrongDataExpectErrorOK(){
         Throwable throwable =  assertThrows(Throwable.class, () -> {
-            List<String> inputList = SampleData.getWrongFormatedLines();
+            List<String> inputList = SampleData.getWrongFormattedLines();
             LoadRules.mapToRules(inputList);
         });
         assertEquals(RuntimeException.class, throwable.getClass());
