@@ -1,12 +1,6 @@
 
 R
 "src/main/java/build/LoadRules.java,a\e\ae7906ad8a9e763540be4fb4397e688051bbc5ad
-V
-&src/main/java/calculate/util/Util.java,4\f\4f3b90c7b3329ade463d8ebca1bf96f98e40f679
-_
-/src/main/java/calculate/NodeTreeCalculator.java,3\4\34e53a49a6eb2a2256eacda357ecda16c4685c63
-_
-/src/main/java/calculate/ColorBoxCalculator.java,0\4\04db732693a0d78a0c39237ed4e066fe3391febe
 [
 +src/main/java/calculate/RuleCalculator.java,2\0\200019bc53e690f316f364b14bf134df1e7f51c6
 Q
@@ -33,20 +27,12 @@ W
 'src/main/java/transform/TextToRule.java,0\b\0b33bafd346a4581ee80bed2d3e99fb919d99144
 X
 (src/test/java/sampledata/SampleData.java,3\2\329b2ef2d23d0d7acdb06c90a4e95a62bf52f195
-9
-	README.MD,9\6\968e80af9562e09cebe594968b130076952eafe1
 [
 +src/main/java/data/tree/TreeCalculator.java,8\4\847fc147694768eec01110eaf425e7f7f1704e8c
 U
 %src/main/java/data/tree/TreeNode.java,d\e\de17c97de05cbb860eb6fbe9425794fb7500855f
 Y
 )src/main/java/data/tree/TreeNodeIter.java,2\3\23889def2cb15bca25e833d9b059d9a9c5b112ac
-U
-%src/main/java/build/LoadTreeDesc.java,3\a\3adc98d7a17b89b18559afab065ab0e86450ace4
-T
-$src/main/java/build/LoadTreeAsc.java,e\9\e99f49dee3486821bcfd3ca88287c2b866a8d3ca
-N
-src/main/java/Application.java,c\0\c02b58f69e810278d2d423bdee557628145ed943
 P
  src/test/java/LoadRulesTest.java,b\5\b58e631f8bf4e0f83d93fbdf1ce431fb9a70b678
 Y

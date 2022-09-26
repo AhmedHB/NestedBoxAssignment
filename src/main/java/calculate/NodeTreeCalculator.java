@@ -17,12 +17,12 @@ public class NodeTreeCalculator {
         this.rules = rules;
     }
 
-    public void buildTreeDesc(String rootBoxColor) throws Exception{
-        rootNodeTree = LoadTreeDesc.buildTree(rootBoxColor, rules);
+    public void buildTreeDescWithUsingColorBoxAmount(String rootBoxColor) throws Exception{
+        rootNodeTree = LoadTreeDesc.buildTreeWithUsingColorBoxAmount(rootBoxColor, rules);
     }
 
-    public void buildTreeAsc(String rootBoxColor, String boxColor) throws Exception{
-        rootNodeTree = LoadTreeAsc.buildTree(rootBoxColor, boxColor, rules);
+    public void buildTreeAscWithoutUsingColorBoxAmount(String rootBoxColor, String boxColor) throws Exception{
+        rootNodeTree = LoadTreeAsc.buildTreeWithoutUsingColorBoxAmount(rootBoxColor, boxColor, rules);
     }
 
     public int getNrOfChildBoxes(){

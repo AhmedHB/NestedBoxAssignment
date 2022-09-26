@@ -20,7 +20,7 @@ public class ColorBoxCalculator {
     }
     public static int getNrOfChildBoxes(String coloredBox, List<Rule<Box>> rules) throws Exception {
         NodeTreeCalculator cbc = new NodeTreeCalculator(rules);
-        cbc.buildTreeDesc(coloredBox);
+        cbc.buildTreeDescWithUsingColorBoxAmount(coloredBox);
         return cbc.getNrOfChildBoxes();
     }
 }

@@ -9,7 +9,7 @@ import rules.SearchRuleUtil;
 import java.util.List;
 
 public class LoadTreeDesc extends LoadTree{
-    public static TreeNode<Box> buildTree(String rootBoxColor, List<Rule<Box>> rules) throws Exception {
+    public static TreeNode<Box> buildTreeWithUsingColorBoxAmount(String rootBoxColor, List<Rule<Box>> rules) throws Exception {
         countBoxes = 0;
         countLeaves = 0;
 

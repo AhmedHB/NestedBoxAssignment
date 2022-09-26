@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoadTreeAsc extends LoadTree{
-    public static TreeNode<Box> buildTree(String rootBoxColor, String colorBox, List<Rule<Box>> rules) throws Exception {
+    public static TreeNode<Box> buildTreeWithoutUsingColorBoxAmount(String rootBoxColor, String colorBox, List<Rule<Box>> rules) throws Exception {
         countBoxes = 0;
         if(rules == null || rules.isEmpty()){
             throw new NoRulesException("No rules!");

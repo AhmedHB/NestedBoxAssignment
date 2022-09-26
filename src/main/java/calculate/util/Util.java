@@ -19,7 +19,7 @@ public class Util {
     }
     private static List<String> countBoxesForTreeRule(String coloredBox, Rule<Box> ruleTree, List<Rule<Box>> rules) throws Exception {
         NodeTreeCalculator cbc = new NodeTreeCalculator(rules);
-        cbc.buildTreeAsc(coloredBox, ruleTree.getColorForData());
+        cbc.buildTreeAscWithoutUsingColorBoxAmount(coloredBox, ruleTree.getColorForData());
         return cbc.getUnqieueColorBoxes();
     }
 }
